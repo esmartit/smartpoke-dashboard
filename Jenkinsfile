@@ -14,5 +14,29 @@
                     env.commit = sh returnStdout: true, script: 'git rev-parse HEAD'
                 }
             }
+
+            container('docker') {
+
+                stage('Build image') {
+                    env.version = sh returnStdout: true, script: 'cat build.number'
+                    withEnv(['VERSION=' + env.version.trim(), 'COMMIT=' + env.commit.trim()]) {
+                        sh """
+                            docker build \
+                            -t esmartit/smartpoke-dashboard:${VERSION}.${COMMIT}  \
+                            -t esmartit/smartpoke-dashboard:latest \
+                            .
+                           """
+                    }
+                }
+
+                stage('Push image') {
+                    withDockerRegistry([credentialsId: 'docker-registry-credentials') {
+                        withEnv(['VERSION=' + env.VERSION.trim(), 'COMMIT=' + env.COMMIT.trim()]) {
+                            sh "docker push esmartit/smartpoke-dashboard:${VERSION}.${COMMIT}"
+                            sh 'docker push esmartit/smartpoke-dashboard:latest'
+                        }
+                    }
+                }
+            }
         }
     }
