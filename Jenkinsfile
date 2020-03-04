@@ -2,7 +2,8 @@
     def label = "worker-${UUID.randomUUID().toString()}"
     podTemplate(label: label, serviceAccount: 'jenkins', 
             containers: [
-            containerTemplate(name: 'docker', image: 'docker:17.12.1-ce', ttyEnabled: true, command: 'cat', envVars: [envVar(key: 'DOCKER_HOST', value: 'tcp://dind.devops:2375')])
+            containerTemplate(name: 'docker', image: 'docker:17.12.1-ce', ttyEnabled: true, command: 'cat', envVars: [envVar(key: 'DOCKER_HOST', value: 'tcp://dind.devops:2375')]),
+            containerTemplate(name: 'helm', image: 'lachlanevenson/k8s-helm:v3.0.2', ttyEnabled: true, command: 'cat')
             ]
     ) {
 
@@ -36,6 +37,13 @@
                             sh 'docker push esmartit/smartpoke-dashboard:latest'
                         }
                     }
+                }
+            }
+
+            container('helm'){
+                withEnv(['VERSION=' + env.VERSION.trim(), 'COMMIT=' + env.COMMIT.trim()]) {
+                    sh "sed -i 's/0.1.0/${VERSION}.${COMMIT}/g' smartpoke-dashboard/Chart.yaml"
+                    sh "helm package smartpoke-dashboard"
                 }
             }
         }
