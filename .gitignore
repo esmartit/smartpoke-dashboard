@@ -1,23 +1,30 @@
-/vendor/
-node_modules/
-npm-debug.log
-yarn-error.log
+*.tfstate
+*.tfstate.backup
+.terraform
+*.iml
+.idea/
+versions.tf
 
-# Laravel 4 specific
-bootstrap/compiled.php
-app/storage/
+# Patterns to ignore when building packages.
+# This supports shell glob matching, relative path matching, and
+# negation (prefixed with !). Only one pattern per line.
+.DS_Store
+_DS_Store
+# Common VCS dirs
+.git/
+.bzr/
+.bzrignore
+.hg/
+.hgignore
+.svn/
+# Common backup files
+*.swp
+*.bak
+*.tmp
+*~
+# Various IDEs
+.project
+*.tmproj
+.vscode/
 
-# Laravel 5 & Lumen specific
-public/storage
-public/hot
-
-# Laravel 5 & Lumen specific with changed public path
-public_html/storage
-public_html/hot
-
-storage/*.key
-.env
-Homestead.yaml
-Homestead.json
-/.vagrant
-.phpunit.result.cache
+smartpoke.es/certs_sms
