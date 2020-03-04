@@ -1,6 +1,10 @@
 #!/usr/bin/env groovy
 
-triggers {
+
+
+node { // node/agent
+    
+    triggers {
     GenericTrigger(
      genericVariables: [
       [key: 'ref', value: '$.ref']
@@ -12,8 +16,7 @@ triggers {
      printPostContent: true
     )
   }
-
-node { // node/agent
+    
   stage('Stage 1') {
     echo 'Hello World' // echo Hello World
   }
