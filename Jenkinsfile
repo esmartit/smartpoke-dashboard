@@ -30,7 +30,7 @@
                 }
 
                 stage('Push image') {
-                    withDockerRegistry([credentialsId: 'docker-registry-credentials') {
+                    withDockerRegistry([credentialsId: 'docker-registry-credentials']) {
                         withEnv(['VERSION=' + env.VERSION.trim(), 'COMMIT=' + env.COMMIT.trim()]) {
                             sh "docker push esmartit/smartpoke-dashboard:${VERSION}.${COMMIT}"
                             sh 'docker push esmartit/smartpoke-dashboard:latest'
