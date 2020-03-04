@@ -5,7 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: esmartit/smartpoke
+  repository: esmartit/smartpoke-dashboard
+  tag: 0.1.0
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
