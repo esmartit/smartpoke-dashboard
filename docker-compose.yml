@@ -1,0 +1,23 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:10.6
+    ports:
+      - 55432:5432
+    volumes:
+      - ./data:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USER: esmartitpg
+      POSTGRES_PASSWORD: 3sm4rt1t
+      POSTGRES_DB: postgres
+  dashboard:
+    image: smartpoke:latest
+    ports:
+      - 8080:80
+    volumes:
+      - ./smartpoke.es:/var/www/html/
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: esmartitpg
+      DB_PASS: 3sm4rt1t
