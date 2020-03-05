@@ -11,7 +11,7 @@
             container('jnlp') {
                 stage('Checkout code') {
                     checkout scm
-                    env.commit = sh returnStdout: true, script: 'git rev-parse HEAD'
+                    env.commit = sh returnStdout: true, script: 'git rev-parse --short HEAD'
                 }
             }
 

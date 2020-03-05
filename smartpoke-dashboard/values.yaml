@@ -6,12 +6,10 @@ replicaCount: 1
 
 image:
   repository: esmartit/smartpoke-dashboard
-  tag: 0.1.0
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: "ibacapital-dashboard"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -36,12 +34,6 @@ service:
   port: 443
   targetPort: 80
 
-database:
-  host: "ibacapital-db-postgresql.ibacapital.svc.cluster.local"
-  port: "5432"
-  user: "esmartitpg"
-  passwordKeyref: "ibacapital-db-postgresql"
-
 ingress:
   enabled: true
   annotations:
@@ -49,14 +41,6 @@ ingress:
      ingress.kubernetes.io/force-ssl-redirect: "true"
      certmanager.k8s.io/cluster-issuer: letsencrypt-prod
      kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: ibacapital.smartpoke.es
-      paths:
-        - /
-  tls:
-    - hosts:
-        - ibacapital.smartpoke.es
-      secretName: ibacapital-smartpoke-tls
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
