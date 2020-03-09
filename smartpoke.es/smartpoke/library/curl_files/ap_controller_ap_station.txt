@@ -1,0 +1,339 @@
+--- AP CONTROLLER ----
+string(1419) "[
+	{
+		"id":1,
+		"chtId":4196793256,
+		"identifier":"44:D1:FA:25:FB:A8",
+		"alias":"",
+		"status":"NOT_RESPONDING",
+		"chtPort":40000,
+		"model":"Galgus AC1200YCST",
+		"version":"6.167.1-r0+6973-33eb2816da",
+		"group":{"id":1,"name":"root"},
+		"aca":{"enabled":true},
+		"ipList":[{"ip":"192.168.1.80","netmask":"255.255.255.0"}],
+		"radioList":[{
+					"id":1,
+					"mac":"44D1FA25FBAA",
+					"uciName":"radio0",
+					"confBand":"5 GHz",
+					"currTxPower":23,
+					"currChannel":44,
+					"status":"ONLINE",
+					"vradioList":[]
+					},
+		            {
+		            "id":2,
+		            "mac":"44D1FA25FBA9",
+		            "uciName":"radio1",
+		            "confBand":"2.4 GHz",
+		            "currTxPower":20,
+		            "currChannel":4,
+		            "status":"ONLINE",
+		            "vradioList":[]}],
+		"chtZoneList":[],
+		"lastBackupFile":"","nstas":0
+	},
+	{
+		"id":2,
+		"chtId":4196793181,
+		"identifier":"44:D1:FA:25:FB:5D",
+		"alias":"Salon",
+		"status":"NOT_RESPONDING",
+		"chtPort":40000,
+		"model":"Galgus AC1200YCST",
+		"version":"6.167.1-r0+6973-33eb2816da",
+		"group":{
+			"id":4,
+			"name":"Las Rozas",
+			"parentId":1,
+			"mapUrl":"/manager-rest/storage/maps/map_4.png",
+			"location":"[.000, .000, .000]"
+			},
+		"aca":{"enabled":true},
+		"ipList":[{"ip":"10.0.10.2","netmask":"255.255.254.0"}],
+		"radioList":[{
+					"id":3,
+					"mac":"44D1FA25FB5F",
+					"uciName":"radio0",
+					"confBand":"5 GHz",
+					"currTxPower":23,
+					"currChannel":132,
+					"status":"ONLINE",
+					"vradioList":[]
+					},{
+					"id":4,
+					"mac":"44D1FA25FB5E",
+					"uciName":"radio1",
+					"confBand":"2.4 GHz",
+					"currTxPower":20,
+					"currChannel":1,
+					"status":"ONLINE",
+					"vradioList":[]}],
+		"chtZoneList":[],
+		"lastBackupFile":"Galgus AC1200YCST_192.168.1.81_2018-10-02-09:13:09:581.tar.gz","nstas":0
+	}]" 
+	array(2) {	
+				[0]=> object(stdClass)#7 (15) 
+					{ 	["id"]=> int(1) 
+						["chtId"]=> int(4196793256) 
+						["identifier"]=> string(17) "44:D1:FA:25:FB:A8" 
+						["alias"]=> string(0) "" 
+						["status"]=> string(14) "NOT_RESPONDING" 
+						["chtPort"]=> int(40000) 
+						["model"]=> string(17) "Galgus AC1200YCST" 
+						["version"]=> string(26) "6.167.1-r0+6973-33eb2816da" 
+						["group"]=> object(stdClass)#8 (2)
+						{ 	["id"]=> int(1) 
+							["name"]=> string(4) "root" } 
+						["aca"]=> object(stdClass)#9 (1) { ["enabled"]=> bool(true) } 
+						["ipList"]=> array(1) 
+						{ [0]=> object(stdClass)#10 (2) 
+							{ 	["ip"]=> string(12) "192.168.1.80" 
+								["netmask"]=> string(13) "255.255.255.0" } 
+						} 
+						["radioList"]=> array(2) 
+						{ [0]=> object(stdClass)#11 (8) 
+							{ 	["id"]=> int(1) 
+								["mac"]=> string(12) "44D1FA25FBAA" 
+								["uciName"]=> string(6) "radio0" 
+								["confBand"]=> string(5) "5 GHz" 
+								["currTxPower"]=> int(23) 
+								["currChannel"]=> int(44) 
+								["status"]=> string(6) "ONLINE" 
+								["vradioList"]=> array(0) { } 
+							} 
+						  [1]=> object(stdClass)#12 (8) 
+						  	{ 	["id"]=> int(2) 
+						  		["mac"]=> string(12) "44D1FA25FBA9" 
+						  		["uciName"]=> string(6) "radio1" 
+						  		["confBand"]=> string(7) "2.4 GHz" 
+						  		["currTxPower"]=> int(20) 
+						  		["currChannel"]=> int(4) 
+						  		["status"]=> string(6) "ONLINE" 
+						  		["vradioList"]=> array(0) { } 
+						  	} 
+						} 
+						["chtZoneList"]=> array(0) { } 
+						["lastBackupFile"]=> string(0) "" 
+						["nstas"]=> int(0) 
+					} 
+				[1]=> object(stdClass)#13 (15) 
+					{ 	["id"]=> int(2) 
+						["chtId"]=> int(4196793181) 
+						["identifier"]=> string(17) "44:D1:FA:25:FB:5D" 
+						["alias"]=> string(5) "Salon" 
+						["status"]=> string(14) "NOT_RESPONDING" 
+						["chtPort"]=> int(40000) 
+						["model"]=> string(17) "Galgus AC1200YCST" 
+						["version"]=> string(26) "6.167.1-r0+6973-33eb2816da" 
+						["group"]=> object(stdClass)#14 (5) 
+						{ 	["id"]=> int(4) 
+							["name"]=> string(9) "Las Rozas" 
+							["parentId"]=> int(1) 
+							["mapUrl"]=> string(36) "/manager-rest/storage/maps/map_4.png" 
+							["location"]=> string(18) "[.000, .000, .000]" } 
+							["aca"]=> object(stdClass)#15 (1) { ["enabled"]=> bool(true) } 
+							["ipList"]=> array(1) 
+								{ 	[0]=> object(stdClass)#16 (2) 
+									{ 	["ip"]=> string(9) "10.0.10.2" 
+										["netmask"]=> string(13) "255.255.254.0" 
+									} 
+								} 
+							["radioList"]=> array(2) 
+							{ 	[0]=> object(stdClass)#17 (8) 
+								{ 	["id"]=> int(3) 
+									["mac"]=> string(12) "44D1FA25FB5F" 
+									["uciName"]=> string(6) "radio0" 
+									["confBand"]=> string(5) "5 GHz" 
+									["currTxPower"]=> int(23) 
+									["currChannel"]=> int(132) 
+									["status"]=> string(6) "ONLINE" 
+									["vradioList"]=> array(0) { } 
+								} 
+								[1]=> object(stdClass)#18 (8) 
+								{ 	["id"]=> int(4) 
+									["mac"]=> string(12) "44D1FA25FB5E" 
+									["uciName"]=> string(6) "radio1" 
+									["confBand"]=> string(7) "2.4 GHz" 
+									["currTxPower"]=> int(20) 
+									["currChannel"]=> int(1) 
+									["status"]=> string(6) "ONLINE" 
+									["vradioList"]=> array(0) { } \
+								} 
+							} 
+							["chtZoneList"]=> array(0) { } 
+							["lastBackupFile"]=> string(61) "Galgus AC1200YCST_192.168.1.81_2018-10-02-09:13:09:581.tar.gz" 
+							["nstas"]=> int(0) 
+						} 
+				} 
+				
+
+
+----------  AP ------------
+object(stdClass)#47 (17) 
+{ 
+	["id"]=> int(2) 
+	["chtId"]=> int(4196793181) 
+	["identifier"]=> string(17) "44:D1:FA:25:FB:5D" 
+	["alias"]=> string(5) "Salon" 
+	["status"]=> string(6) "ONLINE" 
+	["chtPort"]=> int(40000) 
+	["model"]=> string(17) "Galgus AC1200YCST" 
+	["version"]=> string(26) "6.167.1-r0+6973-33eb2816da" 
+	["group"]=> object(stdClass)#48 (7) 
+		{ 	["id"]=> int(4) 
+			["name"]=> string(9) "Las Rozas" 
+			["parentId"]=> int(1) 
+			["mapUrl"]=> string(36) "/manager-rest/storage/maps/map_4.png" 
+			["location"]=> string(18) "[.000, .000, .000]" 
+			["childGroupList"]=> array(0) { } 
+			["childApList"]=> array(1) { [0]=> int(2) } 
+		} 
+		["aca"]=> object(stdClass)#49 (1) 
+		{ 	
+			["enabled"]=> bool(true) 
+		} 
+		["ipList"]=> array(1) 
+		{ 
+			[0]=> object(stdClass)#50 (2) 
+			{ 
+				["ip"]=> string(9) "10.0.10.2" 
+				["netmask"]=> string(13) "255.255.254.0" 
+			} 
+		} 
+		["radioList"]=> array(2) 
+		{ 
+			[0]=> object(stdClass)#51 (14) 
+			{ 
+				["id"]=> int(3) 
+				["mac"]=> string(12) "44D1FA25FB5F" 
+				["phyName"]=> string(4) "phy0" 
+				["uciName"]=> string(6) "radio0" 
+				["confBand"]=> string(5) "5 GHz" 
+				["confTxPower"]=> int(23) 
+				["currTxPower"]=> int(23) 
+				["confChannel"]=> int(36) 
+				["currChannel"]=> int(132) 
+				["confHtMode"]=> string(5) "VHT80" 
+				["currHtMode"]=> string(5) "VHT80" 
+				["status"]=> string(6) "ONLINE" 
+				["disableB"]=> bool(false) 
+				["vradioList"]=> array(1) 
+				{ 
+					[0]=> object(stdClass)#52 (8) 
+					{ 
+						["id"]=> int(34) 
+						["ssid"]=> string(12) "smartpoke_5G" 
+						["status"]=> string(6) "ONLINE" 
+						["nstas"]=> int(1) 
+						["ibridge"]=> object(stdClass)#53 (3) 
+						{ 
+							["name"]=> string(3) "lan" 
+							["ivlan"]=> NULL 
+							["ports"]=> array(2) 
+							{ 
+								[0]=> object(stdClass)#54 (4) 
+								{ 
+									["portNumber"]=> int(3) 
+									["name"]=> string(2) "P1" 
+									["x"]=> int(145) 
+									["y"]=> int(230) 
+								} 
+								[1]=> object(stdClass)#55 (4) 
+								{ 
+									["portNumber"]=> int(2) 
+									["name"]=> string(2) "P2" 
+									["x"]=> int(175) 
+									["y"]=> int(230) 
+								} 
+							} 
+						} 
+						["tc"]=> NULL 
+						["unsync"]=> bool(false) 
+						["name"]=> string(5) "wlan0" 
+					} 
+				} 
+			} 
+			[1]=> object(stdClass)#56 (14) 
+			{ 
+				["id"]=> int(4) 
+				["mac"]=> string(12) "44D1FA25FB5E" 
+				["phyName"]=> string(4) "phy1" 
+				["uciName"]=> string(6) "radio1" 
+				["confBand"]=> string(7) "2.4 GHz" 
+				["confTxPower"]=> int(20) 
+				["currTxPower"]=> int(20) 
+				["confChannel"]=> int(11) 
+				["currChannel"]=> int(1) 
+				["confHtMode"]=> string(4) "HT20" 
+				["currHtMode"]=> string(4) "HT20" 
+				["status"]=> string(6) "ONLINE" 
+				["disableB"]=> bool(false) 
+				["vradioList"]=> array(1) 
+				{ 
+					[0]=> object(stdClass)#57 (8) 
+					{ 
+						["id"]=> int(33) 
+						["ssid"]=> string(9) "smartpoke" 
+						["status"]=> string(6) "ONLINE" 
+						["nstas"]=> int(0) 
+						["ibridge"]=> object(stdClass)#58 (3) 
+						{ 
+							["name"]=> string(3) "lan" 
+							["ivlan"]=> NULL 
+							["ports"]=> array(2) 
+							{ 
+								[0]=> object(stdClass)#59 (4) 
+								{ 
+									["portNumber"]=> int(3) 
+									["name"]=> string(2) "P1" 
+									["x"]=> int(145) 
+									["y"]=> int(230) 
+								} 
+								[1]=> object(stdClass)#60 (4) 
+								{ 
+									["portNumber"]=> int(2) 
+									["name"]=> string(2) "P2" 
+									["x"]=> int(175) 
+									["y"]=> int(230) 
+								} 
+							} 
+						} 
+						["tc"]=> NULL 
+						["unsync"]=> bool(false) 
+						["name"]=> string(5) "wlan1" 
+					} 
+				} 
+			} 
+		} 
+	["ibridgeList"]=> array(1) 
+	{ 
+		[0]=> object(stdClass)#61 (3) 
+		{ 
+			["name"]=> string(3) "lan" 
+			["ivlan"]=> NULL 
+			["ports"]=> array(2) 
+			{ 
+				[0]=> object(stdClass)#62 (4) 
+				{ 
+					["portNumber"]=> int(3) 
+					["name"]=> string(2) "P1" 
+					["x"]=> int(145) 
+					["y"]=> int(230) 
+				} 
+				[1]=> object(stdClass)#63 (4) 
+				{ 
+					["portNumber"]=> int(2) 
+					["name"]=> string(2) "P2" 
+					["x"]=> int(175) 
+					["y"]=> int(230) 
+				} 
+			} 
+		} 
+	} 
+	["ivlanList"]=> array(0) { } 
+	["chtZoneList"]=> array(0) { } 
+	["lastBackupFile"]=> string(61) "Galgus AC1200YCST_192.168.1.81_2018-10-02-09:13:09:581.tar.gz" 
+	["nstas"]=> int(1) 
+}
