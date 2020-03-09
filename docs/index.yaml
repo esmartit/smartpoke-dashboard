@@ -3,7 +3,7 @@ entries:
   smartpoke-dashboard:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2020-03-09T09:26:44.43333686Z"
+    created: "2020-03-09T09:29:34.69876293Z"
     description: A Helm chart for Kubernetes
     digest: ee248017517bb6a861d1f1f1a6be8408aa0ee96654d4a2c24738cc3c51904d38
     name: smartpoke-dashboard
@@ -21,4 +21,14 @@ entries:
     urls:
     - https://esmartit.github.io/smartpoke-dashboard/docs/smartpoke-dashboard-0.1.0.38f53fb.tgz
     version: 0.1.0.38f53fb
-generated: "2020-03-09T09:26:44.430485297Z"
+  - apiVersion: v2
+    appVersion: 0.1.0.38f53fb
+    created: "2020-03-09T09:29:34.69837565Z"
+    description: A Helm chart for Kubernetes
+    digest: 60e758d47007ebadb9aab1e9a3dcdbd8c0dab83d1f08bef7c13487ee607f5738
+    name: smartpoke-dashboard
+    type: application
+    urls:
+    - https://esmartit.github.io/smartpoke-dashboard/docs/smartpoke-dashboard-0.1.0.38f53fb.tgz
+    version: 0.1.0.38f53fb
+generated: "2020-03-09T09:29:34.697821001Z"
