@@ -4,7 +4,7 @@
             containers: [
             containerTemplate(name: 'docker', image: 'docker:17.12.1-ce', ttyEnabled: true, command: 'cat', envVars: [envVar(key: 'DOCKER_HOST', value: 'tcp://dind.devops:2375')]),
             containerTemplate(name: 'helm', image: 'lachlanevenson/k8s-helm:v3.0.2', ttyEnabled: true, command: 'cat'),
-            containerTemplate(name: 'semantic-release', image: 'esmartit/semantic-release:1.0.1', ttyEnabled: true, command: 'cat',envVars: [envVar(key: 'GITHUB_TOKEN', value: '1e35e94f732854ff9506b77e643b06459f7bde27')])
+            containerTemplate(name: 'semantic-release', image: 'esmartit/semantic-release:1.0.1', ttyEnabled: true, command: 'cat',envVars: [envVar(key: 'GITHUB_TOKEN', value: 'b245d78ec2dc12e68c6562c2aa3f136702066f73')])
             ]
     ) {
 
