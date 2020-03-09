@@ -1,10 +1,16 @@
 
+    withCredentials([usernamePassword(
+                        credentialsId: 'github',
+                        usernameVariable: 'username', passwordVariable: 'gitToken')]){
+                        env.GITHUB_TOKEN=gitToken
+                        }
+
     def label = "worker-${UUID.randomUUID().toString()}"
     podTemplate(label: label, serviceAccount: 'jenkins',
             containers: [
             containerTemplate(name: 'docker', image: 'docker:17.12.1-ce', ttyEnabled: true, command: 'cat', envVars: [envVar(key: 'DOCKER_HOST', value: 'tcp://dind.devops:2375')]),
             containerTemplate(name: 'helm', image: 'lachlanevenson/k8s-helm:v3.0.2', ttyEnabled: true, command: 'cat'),
-            containerTemplate(name: 'semantic-release', image: 'esmartit/semantic-release:1.0.1', ttyEnabled: true, command: 'cat',envVars: [envVar(key: 'GITHUB_TOKEN', value: '66b207fa548966c931097ae9291a97e0f1f18956')])
+            containerTemplate(name: 'semantic-release', image: 'esmartit/semantic-release:1.0.1', ttyEnabled: true, command: 'cat',envVars: [envVar(key: 'GITHUB_TOKEN', value: env.GITHUB_TOKEN)])
             ]
     ) {
 
@@ -31,7 +37,7 @@
             }
 
             container('semantic-release'){
-
+                sh "chmod +x prepare-release.sh"
                 sh """
                     npx semantic-release
                 """
