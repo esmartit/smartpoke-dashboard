@@ -4,7 +4,7 @@
             containers: [
             containerTemplate(name: 'docker', image: 'docker:17.12.1-ce', ttyEnabled: true, command: 'cat', envVars: [envVar(key: 'DOCKER_HOST', value: 'tcp://dind.devops:2375')]),
             containerTemplate(name: 'helm', image: 'lachlanevenson/k8s-helm:v3.0.2', ttyEnabled: true, command: 'cat'),
-            containerTemplate(name: 'semantic-release', image: 'docker.pkg.github.com/caos/semantic-release/semantic-release:latest', ttyEnabled: true, command: 'cat')
+            containerTemplate(name: 'semantic-release', image: '3apaxicom/npx:latest', ttyEnabled: true, command: 'cat')
             ]
     ) {
 
