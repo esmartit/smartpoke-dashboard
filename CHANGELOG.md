@@ -1,5 +1,12 @@
 # Semantic Versioning Changelog
 
+## [1.6.5](https://github.com/esmartit/smartpoke-dashboard/compare/v1.6.4...v1.6.5) (2020-03-10)
+
+
+### Bug Fixes
+
+* add a test file ([6cd6d16](https://github.com/esmartit/smartpoke-dashboard/commit/6cd6d168132b80b8d8403bf6c77ef267d6ddeba5))
+
 ## [1.6.4](https://github.com/esmartit/smartpoke-dashboard/compare/v1.6.3...v1.6.4) (2020-03-10)
 
 
