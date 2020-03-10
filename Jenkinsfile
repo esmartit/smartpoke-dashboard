@@ -56,6 +56,7 @@
                 def version = readFile "version.txt"
                 sh "echo ${version}"
                 sh "mv smartpoke-dashboard-0.1.0.tgz docs/"
+                sh "git status"
             }
         }
     }
