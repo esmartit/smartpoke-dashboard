@@ -52,12 +52,12 @@
                 def exists = fileExists 'version.txt'
                 if (exists) {
                     def version = readFile('version.txt').toString().replaceAll("[\\n\\t ]", "")
-                    //sh "rm version.txt"
+                    sh "rm version.txt"
                     git branch: 'gh-pages', credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git'
 //                     def artifactName = 'mv smartpoke-dashboard-'.concat(version).concat('.tgz docs/')
                     def artifactName = "smartpoke-dashboard-${version}.tgz"
                     sh "mv ${artifactName} docs"
-                    sh "git status"
+                    sh "git add docs/${artifactName}"
                 } else {
                     echo 'No'
                 }
