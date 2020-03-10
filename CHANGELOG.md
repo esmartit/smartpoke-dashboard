@@ -1,5 +1,12 @@
 # Semantic Versioning Changelog
 
+## [1.6.18](https://github.com/esmartit/smartpoke-dashboard/compare/v1.6.17...v1.6.18) (2020-03-10)
+
+
+### Bug Fixes
+
+* helm deploy url ([#22](https://github.com/esmartit/smartpoke-dashboard/issues/22)) ([a82729a](https://github.com/esmartit/smartpoke-dashboard/commit/a82729a2043fb555fb7e320480f4d83b12f63bed))
+
 ## [1.6.17](https://github.com/esmartit/smartpoke-dashboard/compare/v1.6.16...v1.6.17) (2020-03-10)
 
 
