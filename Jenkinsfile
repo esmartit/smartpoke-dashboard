@@ -22,14 +22,14 @@
             // Checkout code
             container('jnlp') {
                 stage('Checkout code') {
-                    checkout(
-                        scm: [$class: 'GitSCM', branches: [[name: '*/${BRANCH_NAME}'], [name: '*/gh-pages']],
-                        doGenerateSubmoduleConfigurations: false,
-                        extensions: [],
-                        submoduleCfg: [],
-                        userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git']]])
-                    sh "printenv"
-                    git branch: BRANCH_NAME, url: 'https://github.com/esmartit/smartpoke-dashboard.git'
+//                     checkout(
+//                         scm: [$class: 'GitSCM', branches: [[name: '*/${BRANCH_NAME}'], [name: '*/gh-pages']],
+//                         doGenerateSubmoduleConfigurations: false,
+//                         extensions: [],
+//                         submoduleCfg: [],
+//                         userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git']]])
+//                     sh "printenv"
+                    git credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git'
                     //git branch: 'gh-pages', changelog: false, credentialsId: 'esmartit-github-username-pass', poll: false, url: 'https://github.com/esmartit/smartpoke-dashboard.git'
 //                     sh "ls"
                     //sh "touch hello.txt"
@@ -51,6 +51,10 @@
                 sh """
                     npx semantic-release
                 """
+                sh "helm package smartpoke-dashboard"
+                git branch: 'gh-pages', credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git'
+                sh "echo $APP_VERSION"
+                sh "mv smartpoke-dashboard-0.1.0.tgz docs/"
             }
         }
     }
