@@ -3,6 +3,8 @@
 #docker login -u $DOCKER_USER -p $DOCKER_PASS
 #docker push esmartit/smartpoke-dashboard:"$1"
 #docker push esmartit/smartpoke-dashboard:latest
+echo "${PWD}/smartpoke-dashboard/Chart.yaml"
 sed -i "s/x.x.x/$1/g" "${PWD}/smartpoke-dashboard/Chart.yaml"
-helm package smartpoke-dashboard
+cat "${PWD}/smartpoke-dashboard/Chart.yaml"
+#helm package smartpoke-dashboard
 exit
