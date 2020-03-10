@@ -5,12 +5,11 @@
 replicaCount: 1
 
 image:
-  repository: esmartit/smartpoke
+  repository: esmartit/smartpoke-dashboard
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: "esmartitdemo-dashboard"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -35,12 +34,6 @@ service:
   port: 443
   targetPort: 80
 
-database:
-  host: "esmartitdemo-db-postgresql.default.svc.cluster.local"
-  port: "5432"
-  user: "esmartitpg"
-  passwordKeyref: "esmartitdemo-db-postgresql"
-
 ingress:
   enabled: true
   annotations:
@@ -48,18 +41,6 @@ ingress:
      ingress.kubernetes.io/force-ssl-redirect: "true"
      certmanager.k8s.io/cluster-issuer: letsencrypt-prod
      kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: esmartitdemo.local.smartpoke.es
-      paths:
-        - /
-    - host: esmartitdemo.cluster.smartpoke.es
-      paths:
-        - /
-  tls:
-    - hosts:
-        - esmartitdemo.cluster.smartpoke.es
-        - esmartitdemo.local.smartpoke.es
-      secretName: esmartitdemo-cluster-smartpoke-tls
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
