@@ -29,10 +29,8 @@
             container('semantic-release'){
 
                 stage('Prepare release') {
-                    steps{
-                        sh "chmod +x prepare-release.sh"
-                        sh "npx semantic-release"
-                    }
+                    sh "chmod +x prepare-release.sh"
+                    sh "npx semantic-release"
                 }
 
                 if(env.BRANCH_NAME=='master'){
