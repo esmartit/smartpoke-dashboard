@@ -27,7 +27,7 @@
                     checkout scm
                     sh "printenv"
                     //git branch: 'gh-pages', changelog: false, credentialsId: 'esmartit-github-username-pass', poll: false, url: 'https://github.com/esmartit/smartpoke-dashboard.git'
-                    sh "ls"
+//                     sh "ls"
                     //sh "touch hello.txt"
                     //sh "echo world >> hello.txt"
                     //sh "git add ."
