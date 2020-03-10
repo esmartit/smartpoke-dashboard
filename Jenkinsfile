@@ -52,14 +52,12 @@
                     npx semantic-release
                 """
                 def version = readFile "version.txt"
-                sh "ls"
-                sh "echo ${version}"
+                def appVersion = version
                 sh '''
-                    sed -i -e "s/x.x.x/${version}/g" smartpoke-dashboard/Chart.yaml
+                    helm package smartpoke-dashboard --version ${version} --app-version ${appVersion}
                     '''
-                sh "helm package smartpoke-dashboard --version ${version}"
                 git branch: 'gh-pages', credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git'
-                sh "mv smartpoke-dashboard-${version}.tgz docs/"
+                sh '''mv smartpoke-dashboard-${version}.tgz docs/'''
                 sh "git status"
             }
         }
