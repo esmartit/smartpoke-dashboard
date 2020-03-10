@@ -35,8 +35,7 @@
                     //sh "touch hello.txt"
                     //sh "echo world >> hello.txt"
                     //sh "git add ."
-                    sh "git config --global user.email 'tech@esmartit.es'"
-                    sh "git config --global user.name 'esmartit'"
+
                     //sh "git commit -m 'test commit'"
                     withCredentials([usernamePassword(
                         credentialsId: 'esmartit-github-username-pass',
@@ -54,6 +53,8 @@
                     def version = readFile('version.txt').toString().replaceAll("[\\n\\t ]", "")
                     sh "rm version.txt"
                     git branch: 'gh-pages', credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git'
+                    sh "git config --global user.email 'tech@esmartit.es'"
+                    sh "git config --global user.name 'esmartit'"
                     def artifactName = "smartpoke-dashboard-${version}.tgz"
                     sh "mv ${artifactName} docs"
                     sh "git add docs/${artifactName}"
