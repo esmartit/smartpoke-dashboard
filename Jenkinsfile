@@ -1,16 +1,16 @@
 
     withCredentials([usernamePassword(
-                        credentialsId: 'github',
-                        usernameVariable: 'username', passwordVariable: 'gitToken')]){
-                        env.GITHUB_TOKEN=gitToken
-                        }
+        credentialsId: 'github',
+        usernameVariable: 'username', passwordVariable: 'gitToken')]){
+            env.GITHUB_TOKEN=gitToken
+        }
     withCredentials([usernamePassword(
-                            credentialsId: 'docker-credentials',
-                            usernameVariable: 'dockerUser', passwordVariable: 'dockerPass')]){
-                            env.DOCKER_USER=dockerUser
-                            env.DOCKER_PASS=dockerPass
-                            }
-
+        credentialsId: 'docker-credentials',
+        usernameVariable: 'dockerUser', passwordVariable: 'dockerPass')]){
+            env.DOCKER_USER=dockerUser
+            env.DOCKER_PASS=dockerPass
+        }
+    def repoUrl = "https://github.com/esmartit/smartpoke-dashboard.git"
     def label = "worker-${UUID.randomUUID().toString()}"
     podTemplate(label: label, serviceAccount: 'jenkins',
             containers: [
@@ -22,52 +22,41 @@
             // Checkout code
             container('jnlp') {
                 stage('Checkout code') {
-//                     checkout(
-//                         scm: [$class: 'GitSCM', branches: [[name: '*/${BRANCH_NAME}'], [name: '*/gh-pages']],
-//                         doGenerateSubmoduleConfigurations: false,
-//                         extensions: [],
-//                         submoduleCfg: [],
-//                         userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git']]])
-//                     sh "printenv"
-                    git branch: '${BRANCH_NAME}', credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git'
-                    //git branch: 'gh-pages', changelog: false, credentialsId: 'esmartit-github-username-pass', poll: false, url: 'https://github.com/esmartit/smartpoke-dashboard.git'
-//                     sh "ls"
-                    //sh "touch hello.txt"
-                    //sh "echo world >> hello.txt"
-                    //sh "git add ."
-
-                    //sh "git commit -m 'test commit'"
-                    withCredentials([usernamePassword(
-                        credentialsId: 'esmartit-github-username-pass',
-                        usernameVariable: 'username', passwordVariable: 'password')]){
-                        //sh "git push https://$username:$password@github.com/esmartit/smartpoke-dashboard.git"
-                    }
+                    git branch: '${BRANCH_NAME}', credentialsId: 'github', url: repoUrl
                 }
             }
 
             container('semantic-release'){
-                sh "chmod +x prepare-release.sh"
-                sh "npx semantic-release"
-                def exists = fileExists 'version.txt'
-                if (exists) {
-                    def version = readFile('version.txt').toString().replaceAll("[\\n\\t ]", "")
-                    sh "rm version.txt"
-                    git branch: 'gh-pages', credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git'
-                    sh "git config --global user.email 'tech@esmartit.es'"
-                    sh "git config --global user.name 'esmartit'"
-                    def artifactName = "smartpoke-dashboard-${version}.tgz"
-                    sh "mv ${artifactName} docs"
-                    sh "helm repo index docs --merge docs/index.yaml --url https://esmartit.github.io/smartpoke-dashboard/docs "
-                    sh "git add ."
-                    sh "git status"
-                    sh "git commit -m \"adding new artifact\""
-                    withCredentials([usernamePassword(
-                        credentialsId: 'esmartit-github-username-pass',
-                        usernameVariable: 'username', passwordVariable: 'password')]){
-                            sh "git push https://$username:$password@github.com/esmartit/smartpoke-dashboard.git"
+
+                stage('Prepare release') {
+                    steps{
+                        sh "chmod +x prepare-release.sh"
+                        sh "npx semantic-release"
+                    }
+                }
+
+                if(env.BRANCH_NAME=='master'){
+                    stage('Deploy to GH-PAGES release') {
+                        def exists = fileExists 'version.txt'
+                        if (exists) {
+                            def version = readFile('version.txt').toString().replaceAll("[\\n\\t ]", "")
+                            sh "rm version.txt"
+                            git branch: 'gh-pages', credentialsId: 'github', url: repoUrl
+                            sh "git config --global user.email 'tech@esmartit.es'"
+                            sh "git config --global user.name 'esmartit'"
+                            def artifactName = "smartpoke-dashboard-${version}.tgz"
+                            sh "mv ${artifactName} docs"
+                            sh "helm repo index docs --merge docs/index.yaml --url $repoUrl/docs "
+                            sh "git add ."
+                            sh "git status"
+                            sh "git commit -m \"adding new artifact\""
+                            withCredentials([usernamePassword(
+                                credentialsId: 'esmartit-github-username-pass',
+                                usernameVariable: 'username', passwordVariable: 'password')]){
+                                    sh "git push https://$username:$password@github.com/esmartit/smartpoke-dashboard.git"
+                            }
                         }
-                } else {
-                    echo 'No'
+                    }
                 }
             }
         }
