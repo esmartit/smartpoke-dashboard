@@ -1,6 +1,9 @@
-FROM node:alpine3.11
+FROM docker:stable-git as docker
 
+ENV DOCKER_HOST=tcp://dind.devops:2375
 ENV GITHUB_TOKEN=123
+
+RUN apk add --update nodejs npm curl bash openssl
 
 RUN npm install -g semantic-release               \
         @semantic-release/changelog               \
@@ -9,6 +12,6 @@ RUN npm install -g semantic-release               \
         @semantic-release/git                     \
         @semantic-release/release-notes-generator
 
-RUN apk --no-cache add git
-
-RUN git --version
+RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+RUN chmod 700 get_helm.sh
+RUN /get_helm.sh
