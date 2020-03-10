@@ -29,6 +29,7 @@
                         submoduleCfg: [],
                         userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git']]])
                     sh "printenv"
+                    git branch: BRANCH_NAME
                     //git branch: 'gh-pages', changelog: false, credentialsId: 'esmartit-github-username-pass', poll: false, url: 'https://github.com/esmartit/smartpoke-dashboard.git'
 //                     sh "ls"
                     //sh "touch hello.txt"
