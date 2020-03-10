@@ -60,7 +60,7 @@
                     sh "helm repo index docs --merge docs/index.yaml --url https://esmartit.github.io/smartpoke-dashboard/docs "
                     sh "git add ."
                     sh "git status"
-                    sh "git commit -m \"adding new artifact\""
+                    sh "git commit -m \"adding new artifact...\""
                     withCredentials([usernamePassword(
                         credentialsId: 'esmartit-github-username-pass',
                         usernameVariable: 'username', passwordVariable: 'password')]){
