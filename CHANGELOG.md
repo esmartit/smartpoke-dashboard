@@ -1,5 +1,12 @@
 # Semantic Versioning Changelog
 
+## [1.6.15](https://github.com/esmartit/smartpoke-dashboard/compare/v1.6.14...v1.6.15) (2020-03-10)
+
+
+### Bug Fixes
+
+* adjusting jenkins pipeline ([#19](https://github.com/esmartit/smartpoke-dashboard/issues/19)) ([1cd22c0](https://github.com/esmartit/smartpoke-dashboard/commit/1cd22c05d5c5de5df826f2585e4fae8892663017))
+
 ## [1.6.14](https://github.com/esmartit/smartpoke-dashboard/compare/v1.6.13...v1.6.14) (2020-03-10)
 
 
