@@ -55,7 +55,8 @@
                     //sh "rm version.txt"
                     git branch: 'gh-pages', credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git'
 //                     def artifactName = 'mv smartpoke-dashboard-'.concat(version).concat('.tgz docs/')
-                    sh "echo ${version} hello"
+                    def artifactName = "smartpoke-dashboard-${version}.tgz"
+                    sh "mv ${artifactName} docs"
                     sh "git status"
                 } else {
                     echo 'No'
