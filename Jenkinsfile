@@ -29,7 +29,7 @@
 //                         submoduleCfg: [],
 //                         userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git']]])
 //                     sh "printenv"
-                    git credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git'
+                    git branch: '${BRANCH_NAME}', credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git'
                     //git branch: 'gh-pages', changelog: false, credentialsId: 'esmartit-github-username-pass', poll: false, url: 'https://github.com/esmartit/smartpoke-dashboard.git'
 //                     sh "ls"
                     //sh "touch hello.txt"
@@ -53,7 +53,7 @@
                 """
                 sh "helm package smartpoke-dashboard"
                 git branch: 'gh-pages', credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git'
-                sh "echo $APP_VERSION"
+                sh "echo ${nextRelease.version}"
                 sh "mv smartpoke-dashboard-0.1.0.tgz docs/"
             }
         }
