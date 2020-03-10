@@ -48,17 +48,15 @@
 
             container('semantic-release'){
                 sh "chmod +x prepare-release.sh"
-                sh "npx semantic-release"
-
-
+                def version = sh (script: 'npx semantic-release',returnStdout: true)
                 def exists = fileExists 'version.txt'
 
                 if (exists) {
-                    def version = readFile('version.txt').toString().trim()
+//                     def version = readFile('version.txt').toString().trim()
                     //sh "rm version.txt"
                     git branch: 'gh-pages', credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git'
-                    def command = 'mv smartpoke-dashboard-'.concat(version).concat('.tgz docs/')
-                    sh "echo ${command}"
+//                     def artifactName = 'mv smartpoke-dashboard-'.concat(version).concat('.tgz docs/')
+                    sh "echo ${version}"
                     sh "git status"
                 } else {
                     echo 'No'
