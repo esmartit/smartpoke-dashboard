@@ -4,6 +4,12 @@
                         usernameVariable: 'username', passwordVariable: 'gitToken')]){
                         env.GITHUB_TOKEN=gitToken
                         }
+    withCredentials([usernamePassword(
+                            credentialsId: 'docker-credentials',
+                            usernameVariable: 'dockerUser', passwordVariable: 'dockerPass')]){
+                            env.DOCKER_USER=dockerUser
+                            env.DOCKER_PASS=dockerPass
+                            }
 
     def label = "worker-${UUID.randomUUID().toString()}"
     podTemplate(label: label, serviceAccount: 'jenkins',
