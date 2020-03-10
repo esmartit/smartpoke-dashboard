@@ -54,7 +54,7 @@
                 def exists = fileExists 'version.txt'
 
                 if (exists) {
-                    def version = readFile('version.txt').strip()
+                    def version = readFile('version.txt').trim()
                     def appVersion = version
                     //sh "rm version.txt"
                     git branch: 'gh-pages', credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git'
