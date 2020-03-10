@@ -49,7 +49,7 @@
             container('semantic-release'){
                 sh "chmod +x prepare-release.sh"
                 sh "npx semantic-release"
-                def version = new File('version.txt').text
+                def version = readFile('version.txt').text
                 def appVersion = version
 //                 sh "rm version.txt"
                 git branch: 'gh-pages', credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git'
