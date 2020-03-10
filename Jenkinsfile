@@ -53,9 +53,9 @@
                 """
                 def version = readFile "version.txt"
                 def appVersion = version
-                sh '''
+                sh """
                     helm package smartpoke-dashboard --version ${version} --app-version ${appVersion}
-                    '''
+                    """
                 git branch: 'gh-pages', credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git'
                 sh '''mv smartpoke-dashboard-${version}.tgz docs/'''
                 sh "git status"
