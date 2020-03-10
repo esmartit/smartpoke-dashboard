@@ -53,7 +53,8 @@
                 """
                 sh "helm package smartpoke-dashboard"
                 git branch: 'gh-pages', credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git'
-                sh "echo ${nextRelease.version}"
+                def version = readFile "version.txt"
+                sh "echo ${version}"
                 sh "mv smartpoke-dashboard-0.1.0.tgz docs/"
             }
         }

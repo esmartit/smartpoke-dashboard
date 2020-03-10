@@ -12,4 +12,6 @@ sed -i "s/x.x.x/$1/g" "${PWD}/smartpoke-dashboard/Chart.yaml"
 #mv smartpoke-dashboard-0.1.0.tgz docs/
 #git add docs/smartpoke-dashboard-0.1.0.tgz
 #git commit -m "smartpoke-dashboard-0.1.0"
+touch version.txt
+echo "$1" >> version.txt
 exit
