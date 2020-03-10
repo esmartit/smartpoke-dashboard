@@ -48,16 +48,12 @@
 
             container('semantic-release'){
                 sh "chmod +x prepare-release.sh"
-                sh """
-                    npx semantic-release
-                """
+                sh "npx semantic-release"
                 def version = readFile "version.txt"
                 def appVersion = version
-                sh """
-                    helm package smartpoke-dashboard --version ${version} --app-version ${appVersion}
-                    """
+                sh "rm version.txt"
                 git branch: 'gh-pages', credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git'
-                sh '''mv smartpoke-dashboard-${version}.tgz docs/'''
+//                 sh '''mv smartpoke-dashboard-${version}.tgz docs/'''
                 sh "git status"
             }
         }

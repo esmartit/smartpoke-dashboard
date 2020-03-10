@@ -11,6 +11,7 @@
 #mv smartpoke-dashboard-0.1.0.tgz docs/
 #git add docs/smartpoke-dashboard-0.1.0.tgz
 #git commit -m "smartpoke-dashboard-0.1.0"
+helm package smartpoke-dashboard --version "$1" --app-version "$1"
 touch version.txt
 echo "$1" >> version.txt
 exit
