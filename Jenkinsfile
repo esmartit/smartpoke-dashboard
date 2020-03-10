@@ -54,7 +54,9 @@
                 def version = readFile "version.txt"
                 sh "ls"
                 sh "echo ${version}"
-                sh """  sed -i "s/x.x.x/${version}/g" smartpoke-dashboard/Chart.yaml """
+                sh '''
+                    sed -i -e "s/x.x.x/zest-jenkins/g" smartpoke-dashboard/Chart.yaml
+                    '''
                 sh "helm package smartpoke-dashboard --version ${version}"
                 git branch: 'gh-pages', credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git'
                 sh "mv smartpoke-dashboard-${version}.tgz docs/"
