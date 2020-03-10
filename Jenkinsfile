@@ -14,8 +14,6 @@
     def label = "worker-${UUID.randomUUID().toString()}"
     podTemplate(label: label, serviceAccount: 'jenkins',
             containers: [
-            containerTemplate(name: 'docker', image: 'docker:17.12.1-ce', ttyEnabled: true, command: 'cat', envVars: [envVar(key: 'DOCKER_HOST', value: 'tcp://dind.devops:2375')]),
-            containerTemplate(name: 'helm', image: 'lachlanevenson/k8s-helm:v3.0.2', ttyEnabled: true, command: 'cat'),
             containerTemplate(name: 'semantic-release', image: 'esmartit/semantic-release:1.0.3', ttyEnabled: true, command: 'cat',envVars: [envVar(key: 'GITHUB_TOKEN', value: env.GITHUB_TOKEN)])
             ]
     ) {
@@ -24,7 +22,12 @@
             // Checkout code
             container('jnlp') {
                 stage('Checkout code') {
-                    checkout scm
+                    checkout(
+                        scm: [$class: 'GitSCM', branches: [[name: '*/${BRANCH_NAME}'], [name: '*/gh-pages']],
+                        doGenerateSubmoduleConfigurations: false,
+                        extensions: [],
+                        submoduleCfg: [],
+                        userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git']]])
                     sh "printenv"
                     //git branch: 'gh-pages', changelog: false, credentialsId: 'esmartit-github-username-pass', poll: false, url: 'https://github.com/esmartit/smartpoke-dashboard.git'
 //                     sh "ls"
