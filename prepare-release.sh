@@ -7,5 +7,8 @@ echo "${PWD}/smartpoke-dashboard/Chart.yaml"
 sed -i "s/x.x.x/$1/g" "${PWD}/smartpoke-dashboard/Chart.yaml"
 cat "${PWD}/smartpoke-dashboard/Chart.yaml"
 helm package smartpoke-dashboard
-git status
+git checkout -b gh-pages origin/gh-pages
+mv smartpoke-dashboard-0.1.0.tgz docs/
+git add docs/smartpoke-dashboard-0.1.0.tgz
+git commit -m "smartpoke-dashboard-0.1.0"
 exit
