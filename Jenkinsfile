@@ -57,7 +57,9 @@
                     sh "git config --global user.name 'esmartit'"
                     def artifactName = "smartpoke-dashboard-${version}.tgz"
                     sh "mv ${artifactName} docs"
-                    sh "git add docs/${artifactName}"
+                    sh "helm repo index docs --merge index.yaml --url https://esmartit.github.io/smartpoke-dashboard/docs "
+                    sh "git add ."
+                    sh "git status"
                     sh "git commit -m \"adding new artifact\""
                     withCredentials([usernamePassword(
                         credentialsId: 'esmartit-github-username-pass',
