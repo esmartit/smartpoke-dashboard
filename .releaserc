@@ -27,11 +27,7 @@
         [
             "@semantic-release/github",
             {
-                "assets": [
-                    {
-                        "path": "dist/**"
-                    }
-                ]
+
             }
         ]
     ]
