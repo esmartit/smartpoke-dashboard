@@ -53,7 +53,7 @@
                 def appVersion = version
                 sh "rm version.txt"
                 git branch: 'gh-pages', credentialsId: 'github', url: 'https://github.com/esmartit/smartpoke-dashboard.git'
-                def command = "mv smartpoke-dashboard-${version}" + ".tgz docs/"
+                def command = 'mv smartpoke-dashboard-'+ version  + '.tgz docs/'
                 sh "echo ${command}"
                 sh "git status"
             }
