@@ -1,5 +1,12 @@
 # Semantic Versioning Changelog
 
+## [1.6.16](https://github.com/esmartit/smartpoke-dashboard/compare/v1.6.15...v1.6.16) (2020-03-10)
+
+
+### Bug Fixes
+
+* adjusting docker deploy ([#20](https://github.com/esmartit/smartpoke-dashboard/issues/20)) ([bb9fe60](https://github.com/esmartit/smartpoke-dashboard/commit/bb9fe608ca5b2b8d1f54441a954a9f82a1905f21))
+
 ## [1.6.15](https://github.com/esmartit/smartpoke-dashboard/compare/v1.6.14...v1.6.15) (2020-03-10)
 
 
