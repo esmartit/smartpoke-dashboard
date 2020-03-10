@@ -22,7 +22,8 @@
             // Checkout code
             container('jnlp') {
                 stage('Checkout code') {
-                    git branch: '${BRANCH_NAME}', credentialsId: 'github', url: repoUrl
+                    //git branch: '${BRANCH_NAME}', credentialsId: 'github', url: repoUrl
+                    checkout scm
                 }
             }
 
