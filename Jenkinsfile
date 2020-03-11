@@ -19,15 +19,12 @@
     ) {
 
         node(label) {
-            // Checkout code
-            container('jnlp') {
-                stage('Checkout code') {
-                    //git branch: '${BRANCH_NAME}', credentialsId: 'github', url: repoUrl
-                    checkout scm
-                }
-            }
 
             container('semantic-release'){
+
+                stage('Checkout code') {
+                    checkout scm
+                }
 
                 stage('Prepare release') {
                     sh "chmod +x prepare-release.sh"
@@ -35,7 +32,7 @@
                 }
 
                 if(env.BRANCH_NAME=='master'){
-                    stage('Deploy to GH-PAGES release') {
+                    stage('Deploy Helm Package') {
                         def exists = fileExists 'version.txt'
                         if (exists) {
                             def version = readFile('version.txt').toString().replaceAll("[\\n\\t ]", "")
@@ -48,7 +45,7 @@
                             sh "helm repo index docs --merge docs/index.yaml --url https://esmartit.github.io/smartpoke-dashboard/docs"
                             sh "git add ."
                             sh "git status"
-                            sh "git commit -m \"adding new artifact\""
+                            sh "git commit -m \"adding new artifact version: $version\""
                             withCredentials([usernamePassword(
                                 credentialsId: 'esmartit-github-username-pass',
                                 usernameVariable: 'username', passwordVariable: 'password')]){
