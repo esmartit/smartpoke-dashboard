@@ -14,7 +14,10 @@
     def label = "worker-${UUID.randomUUID().toString()}"
     podTemplate(label: label, serviceAccount: 'jenkins',
             containers: [
-            containerTemplate(name: 'semantic-release', image: 'esmartit/semantic-release:1.0.3', ttyEnabled: true, command: 'cat',envVars: [envVar(key: 'GITHUB_TOKEN', value: env.GITHUB_TOKEN)])
+            containerTemplate(name: 'semantic-release', image: 'esmartit/semantic-release:1.0.3', ttyEnabled: true, command: 'cat',
+            envVars: [
+                envVar(key: 'GITHUB_TOKEN', value: env.GITHUB_TOKEN),
+                envVar(key: 'DOCKER_HOST', value: 'tcp://dind.devops:2375')])
             ]
     ) {
 
