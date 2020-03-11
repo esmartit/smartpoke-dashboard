@@ -1,5 +1,12 @@
 # Semantic Versioning Changelog
 
+# [1.7.0](https://github.com/esmartit/smartpoke-dashboard/compare/v1.6.21...v1.7.0) (2020-03-11)
+
+
+### Features
+
+* adding hotspot feature ([#26](https://github.com/esmartit/smartpoke-dashboard/issues/26)) ([7c0d75b](https://github.com/esmartit/smartpoke-dashboard/commit/7c0d75b9a3433737dfa477edda621ec371dbc9c6))
+
 ## [1.6.21](https://github.com/esmartit/smartpoke-dashboard/compare/v1.6.20...v1.6.21) (2020-03-11)
 
 
