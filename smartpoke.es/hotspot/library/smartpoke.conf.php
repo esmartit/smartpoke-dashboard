@@ -1,16 +1,10 @@
 <?php
 
-// $configValues['DB_ENGINE'] = 'mysqli';
-// $configValues['DB_HOST'] = 'esmartit-rds-mysql.cfyfyp455hwf.eu-west-1.rds.amazonaws.com';
-// $configValues['DB_PORT'] = '3306';
-// $configValues['DB_USER'] = 'esmartit';
-// $configValues['DB_PASS'] = 'gP3ZnsABNbQnaaudxpOR';
-// $configValues['DB_NAME'] = 'esmartitDBTest';
 $configValues['DB_ENGINE'] = 'postgres';
-$configValues['DB_HOST'] = 'rds-pg-01.smartpoke.es';
-$configValues['DB_PORT'] = '5432';
-$configValues['DB_USER'] = 'esmartitpg';
-$configValues['DB_PASS'] = 'mi3Wa_zU1JTbw7Mj4yS4NQoI';
+$configValues['DB_HOST'] = $_ENV["DB_HOST"];
+$configValues['DB_PORT'] = $_ENV["DB_PORT"];
+$configValues['DB_USER'] = $_ENV["DB_USER"];
+$configValues['DB_PASS'] = $_ENV["DB_PASS"];
 $configValues['DB_NAME'] = 'postgres';
 
 // Public Schema
