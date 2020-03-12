@@ -1,5 +1,12 @@
 # Semantic Versioning Changelog
 
+## [1.7.1](https://github.com/esmartit/smartpoke-dashboard/compare/v1.7.0...v1.7.1) (2020-03-12)
+
+
+### Bug Fixes
+
+* problem with the DB connection. ([#28](https://github.com/esmartit/smartpoke-dashboard/issues/28)) ([906413a](https://github.com/esmartit/smartpoke-dashboard/commit/906413ae9a683f4a8979e660590b372288e95083))
+
 # [1.7.0](https://github.com/esmartit/smartpoke-dashboard/compare/v1.6.21...v1.7.0) (2020-03-11)
 
 
