@@ -1,5 +1,12 @@
 # Semantic Versioning Changelog
 
+## [1.7.2](https://github.com/esmartit/smartpoke-dashboard/compare/v1.7.1...v1.7.2) (2020-03-12)
+
+
+### Bug Fixes
+
+* issues with email form ([#29](https://github.com/esmartit/smartpoke-dashboard/issues/29)) ([550f29c](https://github.com/esmartit/smartpoke-dashboard/commit/550f29cb5ed36aedacc633db72f22edcc11bcc25))
+
 ## [1.7.1](https://github.com/esmartit/smartpoke-dashboard/compare/v1.7.0...v1.7.1) (2020-03-12)
 
 
