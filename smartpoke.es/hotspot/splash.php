@@ -36,7 +36,7 @@
 	$checkbox3 = "";
 
 	// Location of the splash
-	$data['rootUrl'] = "https://" . $_SERVER['SERVER_NAME'] . "/sp_meraki";
+	$data['rootUrl'] = "https://" . $_SERVER['SERVER_NAME'] . "/hotspot";
 
 	if ($isLoginRequest) {
 		// URLs
@@ -80,7 +80,12 @@
   <!-- Custom CSS -->
   <link href="css/landing-page.css" rel="stylesheet">
   <!-- Custom Fonts -->
-  <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+	<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<!-- <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css"> -->
+
 </head>
 <body>
 	<div class="container body">
@@ -94,7 +99,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
 							<div class="x_panel">
 								<div class="x_title">
-									<div class="x_content"> 
+									<div class="x_content">
 										<form id="login_form" class="form-signin" role="form" method="POST" enctype="multipart/form-data">
 											<?php if ($isLoginRequest) { ?>
 												<h2 class="form-signin-heading">Demo eSmartIT</h2>
@@ -125,7 +130,7 @@
 					                </div>
 					              </div>
 
-												<p>&nbsp;</p>												
+												<p>&nbsp;</p>
 									      <div class="form-group">
 					                <label class="control-label col-md-3 col-sm-3 col-xs-2"><?php echo $l_mobilephone;?></label>
 													<div class="col-md-3 col-sm-3 col-xs-4">
@@ -144,7 +149,7 @@
 									                $selected = '';
 									                if ($countrycode == $rowcode[1]) $selected = 'selected = $countrycode';
 																		echo "<option value=$rowcode[1] $selected>$row_country</option>";
-																	include('library/closedb.php');																
+																	include('library/closedb.php');
 									              }
 															?>
 									          </select>
@@ -153,8 +158,8 @@
 									          <input type="text" id="mobilephone" name="mobilephone" required autofocus class="form-control col-md-9 col-xs-6">
 									        </div>
 									      </div>
-												
-												<p>&nbsp;</p>												
+
+												<p>&nbsp;</p>
 												<fieldset id="register">
 
 					                <div class="form-group">
@@ -168,7 +173,7 @@
 					                <div class="form-group">
 					                  <label class="control-label col-md-9 col-sm-9 col-xs-6"><?php echo $l_email;?><span class="required">*</span></label>
 					                  <div class="col-md-9 col-sm-6 col-xs-6">
-										          <input type="text" id="email" name="email" onblur="validate()" required class="form-control col-md-9 col-xs-6">
+										          <input type="text" id="email_cli" name="email_cli" onblur="validate()" required class="form-control col-md-9 col-xs-6">
 															<div id='resultEmail'></div>
 					                  </div>
 					                </div>
@@ -192,7 +197,7 @@
 					                  </div>
 					                </div>
 					                <div class="form-group">
-					                  <label class="control-label col-md-9 col-sm-9 col-xs-6"><?php echo $l_select_gender?></label>
+					                  <label class="control-label col-md-9 col-sm-9 col-xs-6"><?php echo $l_gender?></label>
 					                  <div class="col-md-9 col-sm-6 col-xs-6">
 											        <select id="gender" name="gender" class="form-control">
 											          <option value="H"><?php echo $l_man;?></option>
@@ -219,11 +224,11 @@
 							          <div class="clearfix"></div>
 				                <div class="form-group">
 				                  <div class="col-md-12 col-sm-12 col-xs-12">
-	                          <button id="btnlogin" type="submit" name="btnlogin" class="btn btn-lg btn-primary btn-block" value="submit"><?php echo $l_login;?></button>
-														<button id="btnregister" type="submit" name="btnregister" class="btn btn-lg btn-primary btn-block" onclick="registerUser()" value="submitReg"><?php echo $l_regisbutton;?></button>
+	                          <button id="btnlogin" type="submit" name="btnlogin" class="btn btn-lg btn-primary btn-block" value="submitLog"><?php echo $l_login;?></button>
+														<button id="btnregister" type="submit" name="btnregister" class="btn btn-lg btn-primary btn-block" value="submitReg"><?php echo $l_regisbutton;?></button>
 				                  </div>
-				                </div>								
-												<p>&nbsp;</p>												
+				                </div>
+												<p>&nbsp;</p>
 
 											<?php } else  if ($isLoggedIn) { ?>
 												<div class="alert alert-info"> <?php echo $l_logged_in;?> <a href="/logout.php">Logout</a></div>
@@ -239,62 +244,63 @@
 	      </div>
 	    </div>
 	  </div>
-	</div>
-  <!-- footer content -->
-  <div class="clearfix"></div>
-  <footer>
-    <div class="pull-right">
-      <?php echo $l_footer2;?>
-    </div>
-    <div class="clearfix"></div>
-  </footer>
-  <!-- /footer content -->
 
-  <!-- jQuery -->
-  <script src="js/jquery.js"></script>
+	  <!-- jQuery -->
+	  <!-- <script src="js/jquery.js"></script> -->
 
-  <!-- Bootstrap Core JavaScript -->
-  <script src="js/bootstrap.min.js"></script>
+	  <!-- Bootstrap Core JavaScript -->
+	  <!-- <script src="js/bootstrap.min.js"></script> -->
 
-	<script>
-		$( window ).load(function() {
-			hide();
-			document.getElementById("errorPhone").style.display = 'none';
-		});		
-	</script>
+		<script>
+			$( window ).load(function() {
+				hide();
+				document.getElementById("errorPhone").style.display = 'none';
+			});
+		</script>
 
-	<script>
-		function show(){
-			document.getElementById("selCountryCode").disabled = true;
-			document.getElementById("mobilephone").disabled = true;
-			document.getElementById("register").style.display = 'block';
-			document.getElementById("pin").disabled = false;
-			document.getElementById("email").disabled = false;
-			document.getElementById("firstname").disabled = false;
-			document.getElementById("checkbox1").disabled = false;
-			document.getElementById("btnlogin").style.display = 'none';
-			document.getElementById("btnregister").style.display = 'block';
-		}			
+		<script>
+			function show(){
+				document.getElementById("selCountryCode").disabled = true;
+				document.getElementById("mobilephone").disabled = true;
+				document.getElementById("register").style.display = 'block';
+				document.getElementById("pin").disabled = false;
+				document.getElementById("email_cli").disabled = false;
+				document.getElementById("firstname").disabled = false;
+				document.getElementById("checkbox1").disabled = false;
+				document.getElementById("btnlogin").style.display = 'none';
+				document.getElementById("btnregister").style.display = 'block';
+			}
 
-		function hide(){
-			document.getElementById("selCountryCode").disabled = false;
-			document.getElementById("mobilephone").disabled = false;
-			document.getElementById("register").style.display = 'none';
-			document.getElementById("pin").disabled = true;
-			document.getElementById("email").disabled = true;
-			document.getElementById("firstname").disabled = true;
-			document.getElementById("checkbox1").disabled = true;
-			document.getElementById("btnlogin").style.display = 'block';
-			document.getElementById("btnregister").style.display = 'none';
-		}			
-	</script>
+			function hide(){
+				document.getElementById("selCountryCode").disabled = false;
+				document.getElementById("mobilephone").disabled = false;
+				document.getElementById("register").style.display = 'none';
+				document.getElementById("pin").disabled = true;
+				document.getElementById("email_cli").disabled = true;
+				document.getElementById("firstname").disabled = true;
+				document.getElementById("checkbox1").disabled = true;
+				document.getElementById("btnlogin").style.display = 'block';
+				document.getElementById("btnregister").style.display = 'none';
+			}
+		</script>
 
-	<script>
-		$(document).ready(function() {
+		<script>
+			$(function () {
+			    $("#login_form button").click(function (ev) {
+			        ev.preventDefault() // cancel form submission
+			        if ($(this).attr("value") == "submitLog") {
+								validUser();
+			        }
+			        if ($(this).attr("value") == "submitReg") {
+								registerUser();
+			        }
+			    });
+			});
+		</script>
 
-	    $('#login_form').on('submit', function(e) {
-        e.preventDefault();
-				
+
+		<script>
+			function validUser() {
 				var formStr = $('#login_form').serialize();
 				$.ajax({
 				  url: 'validUser.php',
@@ -309,106 +315,116 @@
 						var data = object['data'];
 						var user = $("#selCountryCode").val()+$("#mobilephone").val();
 						var loginUrl = $("#loginUrl").val();
-				
-						if (section == "error") {					
+
+						if (section == "error") {
 							$("#errorPhone").text(data);
 							document.getElementById("errorPhone").style.display = 'block';
 						} else {
 							setUser(user, data);
 							if (section == "go") {
 								document.getElementById("login_form").action = loginUrl;
-								document.getElementById("login_form").submit(); 							
-							} else {	
+								document.getElementById("login_form").submit();
+							} else {
 								document.getElementById("errorPhone").style.display = 'none';
 								alert('<?php echo $l_pin3;?>'+': '+data);
 								show();
 							}
-						} 
+						}
 				  }
 				});
-			})
-		});
-	</script>
+			}
+		</script>
 
-	<script>
-		function validPin(){
-			var vpin = $("#pin").val();;
-			var vpass = $("#password").val();;
-		  var result = $("#errorPhone");
-			result.text("");
-		
-			document.getElementById("errorPhone").style.display = 'none';
-			if (vpin != vpass) {
-		    result.text("<?php echo $errorPin;?>");
-				document.getElementById("errorPhone").style.display = 'block';
+		<script>
+			function registerUser() {
+				document.getElementById("selCountryCode").disabled = false;
+				document.getElementById("mobilephone").disabled = false;
+				var formStr = $('#login_form').serialize();
+				$.ajax({
+				  url: 'registerUser.php',
+				  type: 'POST',
+					data: formStr,
+				  dataType: 'json',
+				  success:function(response) {
 
-				document.getElementById("pin").focus();
-			  return false;
-			} 
-		}			
-	</script>
+				    console.log(response);
+						var object = response[0];
+						var section = object['section'];
+						var data = object['data'];
+						var user = $("#selCountryCode").val()+$("#mobilephone").val();
+						var loginUrl = $("#loginUrl").val();
 
-	<script>
-		function validateEmail(email) {
-		  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		  return re.test(email);
-		}
-
-		function validate() {
-		  var result = $("#errorPhone");
-		  var email = $("#email").val();
-		  result.text("");
-
-			document.getElementById("errorPhone").style.display = 'none';
-		  if (!validateEmail(email)) {
-		    result.text("<?php echo $errorEmail;?>");
-				document.getElementById("errorPhone").style.display = 'block';
-
-				document.getElementById("email").focus();
-			  return false;
-		  }
-		}
-	</script>
-	
-	<script>
-		function registerUser() {
-			document.getElementById("selCountryCode").disabled = false;
-			document.getElementById("mobilephone").disabled = false;
-			var formStr = $('#login_form').serialize();
-			$.ajax({
-			  url: 'registerUser.php',
-			  type: 'POST',
-				data: formStr,
-			  dataType: 'json',
-			  success:function(response) {
-
-			    console.log(response);
-					var object = response[0];
-					var section = object['section'];
-					var data = object['data'];
-					var user = $("#selCountryCode").val()+$("#mobilephone").val();
-					var loginUrl = $("#loginUrl").val();
-				
-					if (section == "error") {
-						$("#errorPhone").text(data);
-						document.getElementById("errorPhone").style.display = 'block';
-					} else {
-						if (section == "go") {
+						if (section == "error") {
+							$("#errorPhone").text(data);
+							document.getElementById("errorPhone").style.display = 'block';
+						} else {
 							setUser(user, data);
-							document.getElementById("login_form").action = loginUrl;
-							document.getElementById("login_form").submit();
+							if (section == "go") {
+								document.getElementById("login_form").action = loginUrl;
+								document.getElementById("login_form").submit();
+							}
 						}
-					}
-			  }
-			});
-		}
-	</script>
+				  }
+				});
+			}
+		</script>
 
-	<script>
-		function setUser(username, password) {
-			$('input[name=username]').val(username);
-			$('input[name=password]').val(password);
-		}
-	</script>
+		<script>
+			function setUser(username, password) {
+				$('input[name=username]').val(username);
+				$('input[name=password]').val(password);
+			}
+		</script>
+
+		<script>
+			function validPin(){
+				var vpin = $("#pin").val();;
+				var vpass = $("#password").val();;
+			  var result = $("#errorPhone");
+				result.text("");
+
+				document.getElementById("errorPhone").style.display = 'none';
+				if (vpin != vpass) {
+			    result.text("<?php echo $errorPin;?>");
+					document.getElementById("errorPhone").style.display = 'block';
+
+					document.getElementById("pin").focus();
+				  return false;
+				}
+			}
+		</script>
+
+		<script>
+			function validateEmail(email) {
+			  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			  return re.test(email);
+			}
+
+			function validate() {
+			  var result = $("#errorPhone");
+			  var email = $("#email_cli").val();
+			  result.text("");
+
+				document.getElementById("errorPhone").style.display = 'none';
+			  if (!validateEmail(email)) {
+			    result.text("<?php echo $errorEmail;?>");
+					document.getElementById("errorPhone").style.display = 'block';
+
+					document.getElementById("email_cli").focus();
+				  return false;
+			  }
+			}
+		</script>
+
+	</div>
+  <!-- footer content -->
+  <div class="clearfix"></div>
+  <footer>
+    <div class="pull-right">
+      <?php echo $l_footer2;?>
+    </div>
+    <div class="clearfix"></div>
+  </footer>
+  <!-- /footer content -->
 </body>
 </html>
