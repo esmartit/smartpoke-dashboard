@@ -23,7 +23,7 @@ $configValues['TBL_RWPROVIDERS'] = 'esmartit.rw_providers';
 $configValues['TBL_RWSTATE'] = 'esmartit.rw_state';
 $configValues['TBL_RWZIPCODE'] = 'esmartit.rw_zipcode';
 
-$esquema = 'esmartitdemo.';
+$esquema = 'smartpoke.';
 
 $configValues['TBL_RADNAS'] = $esquema.'nas';
 $configValues['TBL_RADACCT'] = $esquema.'radacct';
