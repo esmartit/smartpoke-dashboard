@@ -125,7 +125,6 @@ if ($isLoggedIn) {
                                             <?php } ?>
                                             <p>&nbsp;</p>
                                             <h4>--- <?php echo $hotspot_name;?> ---</h4>
-
                                             <center>
                                                 <table border="0" cellpadding="25" cellspacing="10">
                                                     <tbody>
