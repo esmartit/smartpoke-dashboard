@@ -46,9 +46,12 @@ if ($isLoginRequest) {
     $data['ap']['mac'] = $_REQUEST['ap_mac'];
     $data['ap']['name'] = $_REQUEST['ap_name'];
     $data['ap']['tags'] = explode(" ", $_REQUEST['ap_tags']);
-    $spot_id = $data['ap']['tags'][0];
-    $sensorname = $data['ap']['tags'][1];
-    $hotspot_name = 'eSmartIT';
+
+    $groupname = substr($data['ap']['tags'][0], strpos($data['ap']['tags'][0], ':')+1, strlen($data['ap']['tags'][0]));
+    $hotspot_name = substr($data['ap']['tags'][1], strpos($data['ap']['tags'][1], ':')+1, strlen($data['ap']['tags'][1]));
+    $schema = substr($data['ap']['tags'][2], strpos($data['ap']['tags'][2], ':')+1, strlen($data['ap']['tags'][2]));
+    $sensorname = substr($data['ap']['tags'][3], strpos($data['ap']['tags'][3], ':')+1, strlen($data['ap']['tags'][3]));
+    $spot_id = substr($data['ap']['tags'][4], strpos($data['ap']['tags'][4], ':')+1, strlen($data['ap']['tags'][4]));
 
     // Client Info
     $data['client']['mac'] = $_REQUEST['client_mac'];
@@ -107,6 +110,8 @@ if ($isLoggedIn) {
                                             <input type="hidden" id="hotspot_name" name="hotspot_name" value="<?php echo $hotspot_name;?>">
                                             <input type="hidden" id="spot_id" name="spot_id" value="<?php echo $spot_id;?>">
                                             <input type="hidden" id="loginUrl" name="loginUrl" value="<?= $data['loginUrl'];?>">
+                                            <input type="hidden" id="groupname" name="groupname" value="<?php echo $groupname;?>">
+
 
                                             <input type="hidden" id="username" name="username" class="form-control" value="<?= $_REQUEST['username'] ?>">
                                             <input type="hidden" id="password" name="password" class="form-control">
@@ -119,8 +124,7 @@ if ($isLoggedIn) {
                                                 <div id="errorPhone" class="alert alert-danger"><?= $data['errorMessage'] ?></div>
                                             <?php } ?>
                                             <p>&nbsp;</p>
-                                            <h4>xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</h4>
-
+                                            <h4>--- <?php echo $hotspot_name;?> ---</h4>
                                             <center>
                                                 <table border="0" cellpadding="25" cellspacing="10">
                                                     <tbody>
