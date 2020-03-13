@@ -1,5 +1,12 @@
 # Semantic Versioning Changelog
 
+## [1.7.4](https://github.com/esmartit/smartpoke-dashboard/compare/v1.7.3...v1.7.4) (2020-03-13)
+
+
+### Bug Fixes
+
+* landing page layout and $l_select_gender ([#32](https://github.com/esmartit/smartpoke-dashboard/issues/32)) ([cb624da](https://github.com/esmartit/smartpoke-dashboard/commit/cb624dab23ec095ae1a8168f5f8c09c84c5c10a8))
+
 ## [1.7.3](https://github.com/esmartit/smartpoke-dashboard/compare/v1.7.2...v1.7.3) (2020-03-13)
 
 
