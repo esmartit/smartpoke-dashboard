@@ -124,7 +124,7 @@ if ($isLoggedIn) {
                                                 <div id="errorPhone" class="alert alert-danger"><?= $data['errorMessage'] ?></div>
                                             <?php } ?>
                                             <p>&nbsp;</p>
-                                            <h4>--- <?php echo $hotspot_name;?> ---</h4>
+                                            <h4><?php echo $hotspot_name;?></h4>
                                             <center>
                                                 <table border="0" cellpadding="25" cellspacing="10">
                                                     <tbody>
