@@ -2,118 +2,83 @@
 
 switch($_SERVER['REQUEST_METHOD'])
 {
-	case 'GET': echo "62e40df287340cfe5407eb6e1146fc30d86de272"; break;
-	case 'POST': $content = trim(file_get_contents("php://input"));
-		$data = json_decode($content);
+    case 'GET': echo "62e40df287340cfe5407eb6e1146fc30d86de272"; break;
+    case 'POST': $content = trim(file_get_contents("php://input"));
+        $data = json_decode($content);
 
-		//$name = $data->data->apTags[1];
-		$name = 'esmartit';
-		$date = date("Ymd");
+        $aptag_1 = $data->data->apTags[1];
+        $aptag_2 = $data->data->apTags[2];
+        $aptag_3 = $data->data->apTags[3];
+        $aptag_4 = $data->data->apTags[4];
+        $aptag_5 = $data->data->apTags[5];
 
-//		$datafile = "/rocotowifi/PROD/".$date."-".$name.".csv";
+        $groupname = substr($aptag_1, strpos($aptag_1, ':')+1, strlen($aptag_1));
+        $hotspot_name = substr($aptag_2, strpos($aptag_2, ':')+1, strlen($aptag_2));
+        $esquema = substr($aptag_3, strpos($aptag_3, ':')+1, strlen($aptag_3));
+        $sensorname = substr($aptag_4, strpos($aptag_4, ':')+1, strlen($aptag_4));
+        $spot_id = substr($aptag_5, strpos($aptag_5, ':')+1, strlen($aptag_5));
 
-//		if (file_exists($datafile) != 1) {
-//		  $fh = fopen($datafile, 'w') or die('nok');
-//		} else {
-//		  $fh = fopen($datafile, 'a');
-//		}
+        $devices = count($data->data->observations);
 
-		    // $sensorname = $data->data->apTags[2];
-		    $sensorname = 'ibacp18-0002';
+        include('../library/pages_common.php');
+        include('../library/opendb.php');
 
-//		echo $datafile." - ".$sensorname;
-			  include('../library/pages_common.php');
-		include('../library/opendb.php');
-		$sql_esquema = "SELECT esquema ".
-					  "FROM esmartit.rw_client ".
-					  "WHERE client = '$name'";
-		    $ret_esquema = pg_query($dbConnect, $sql_esquema);
-		if(!$ret_esquema) {
-		      echo "ERROR: ".pg_last_error($dbConnect)."</br>";
-			exit;
-		}
-		if (pg_num_rows($ret_esquema) == 0) {
-		      echo "ERROR: VERIFICAR CLIENTE / ESQUEMA </br>";
-			exit;
-		} else {
-			$row = pg_fetch_assoc($ret_esquema);
-			$esquema = $row['esquema'];
-		}
+        for ($i=0; $i<$devices; $i++) {
 
-		$sql_sensor = "SELECT spot_id ".
-					  "FROM ".$esquema.".rw_sensor ".
-					  "WHERE sensorname = '$sensorname'";
-		$ret_sensor = pg_query($dbConnect, $sql_sensor);
-		$row_sensor = pg_fetch_row($ret_sensor);
+            $mac = strtoupper($data->data->observations[$i]->clientMac);
+            $sensordate = $data->data->observations[$i]->seenTime;
+            $sensordatestart = date('Y-m-d H:i:s', strtotime($sensordate));
+            $power = $data->data->observations[$i]->rssi - 95;
+            $m_distance = $data->data->observations[$i]->location->unc;
+            $m_power = $data->data->observations[$i]->rssi;
 
-		$spot_id = $row_sensor[0];
+            $machashed = hashmac($mac);
+            $macdevice = substr($mac, 9, 17);
+            $macvendor = substr($mac, 0, 8);
+            $devicehashmac = $macdevice.'-'.$machashed;
 
-		$devices = count($data->data->observations);
-		for ($i=0; $i<$devices; $i++) {
+            $vendor = $data->data->observations[$i]->manufacturer;
+            $sensordatestop = date('Y-m-d H:i:s', strtotime('+60 seconds', strtotime($sensordatestart)));
 
-			$mac = strtoupper($data->data->observations[$i]->clientMac);
-			$sensordate = $data->data->observations[$i]->seenTime;
-			$sensordatestart = date('Y-m-d H:i:s', strtotime($sensordate));
-			$power = $data->data->observations[$i]->rssi - 95;
-			$m_distance = $data->data->observations[$i]->location->unc;
-			$m_power = $data->data->observations[$i]->rssi;
+            //Calculating distence
+            if ($m_distance < 49) {
+                $distance = $m_distance;
+            } else {
+                $val = ((27.55-(20*log10(2412))+abs($power))/20);
+                $meters = pow(10, $val);
+                $distance = round($meters,2);
+            }
 
-			$machashed = hashmac($mac);
-			$macdevice = substr($mac, 9, 17);
-			$macvendor = substr($mac, 0, 8);
-			$devicehashmac = $macdevice.'-'.$machashed;
+            $datestart = date('Y-m-d', strtotime($sensordatestart));
+            $timestart = date('H:i:s', strtotime($sensordatestart));
+            $datestop = date('Y-m-d', strtotime($sensordatestop));
+            $timestop = date('H:i:s', strtotime($sensordatestop));
 
-			$vendor = $data->data->observations[$i]->manufacturer;
-			$sensordatestop = date('Y-m-d H:i:s', strtotime('+60 seconds', strtotime($sensordatestart)));
+            // Aqui vienen los inserts a las tablas rw_sensoracct
 
-			//Calculating distence
-			if ($m_distance < 49) {
-				$distance = $m_distance;
-			} else {
-				$val = ((27.55-(20*log10(2412))+abs($power))/20);
-				$meters = pow(10, $val);
-				$distance = round($meters,2);
-			}
+            if ($power < -1) {
 
-			$datestart = date('Y-m-d', strtotime($sensordatestart));
-			$timestart = date('H:i:s', strtotime($sensordatestart));
-			$datestop = date('Y-m-d', strtotime($sensordatestop));
-			$timestop = date('H:i:s', strtotime($sensordatestop));
+                $sensoracct = "SELECT ".$esquema.".ins_sensoracct('$sensorname',
+        													'$macvendor',
+        													'$devicehashmac',
+        													'$datestart',
+        													'$timestart',
+        													'$datestop',
+        													'$timestop',
+        													60,
+        													$power,
+        													$distance)";
 
-			// Aqui vienen los inserts a las tablas rw_sensoracct
+                $result = pg_exec($dbConnect, $sensoracct);
+            }
+        }
+        $totalizar = "SELECT ".$esquema.".totalizar()";
+        $result = pg_exec($dbConnect, $totalizar);
 
-			if ($power < -1) {
+        include('../library/closedb.php');
 
-				$sensoracct = "SELECT ".$esquema.".ins_sensoracct('$sensorname',
-													'$macvendor',
-													'$devicehashmac',
-													'$datestart',
-													'$timestart',
-													'$datestop',
-													'$timestop',
-													60,
-													$power,
-													$distance)";
-
-				$result = pg_exec($dbConnect, $sensoracct);
-
-				// Aqui genero el fichero de text... .CSV
-//				$string =$spot_id.",".$sensorname.",".$macvendor.",".$vendor.",".$mac.",".$devicehashmac.",".$datestart." ".$timestart.",".$datestop." ".$timestop.",60,".$power.",".$distance."\r\n";
-				// echo $string;
-
-//				fwrite($fh, $string);
-		 			}
-		}
-
-		$totalizar = "SELECT ".$esquema.".totalizar()";
-		$result = pg_exec($dbConnect, $totalizar);
-
-		// $res_view = pg_exec($dbConnect, "REFRESH MATERIALIZED VIEW $esquema.sensor_acct_aggregate_view");
-
-		include('../library/closedb.php');
-
-break;
-	default:
+        break;
+    default:
 }
-	
+
 ?>
