@@ -1,5 +1,12 @@
 # Semantic Versioning Changelog
 
+# [1.8.0](https://github.com/esmartit/smartpoke-dashboard/compare/v1.7.7...v1.8.0) (2020-03-28)
+
+
+### Features
+
+* adding data refresh cron job ([#39](https://github.com/esmartit/smartpoke-dashboard/issues/39)) ([c39d18b](https://github.com/esmartit/smartpoke-dashboard/commit/c39d18b2b815eac241de2fd124cc4c5235465ccc))
+
 ## [1.7.7](https://github.com/esmartit/smartpoke-dashboard/compare/v1.7.6...v1.7.7) (2020-03-22)
 
 
