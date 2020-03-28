@@ -1,5 +1,12 @@
 # Semantic Versioning Changelog
 
+## [1.8.1](https://github.com/esmartit/smartpoke-dashboard/compare/v1.8.0...v1.8.1) (2020-03-28)
+
+
+### Bug Fixes
+
+* adding missing env vars ([#40](https://github.com/esmartit/smartpoke-dashboard/issues/40)) ([689060e](https://github.com/esmartit/smartpoke-dashboard/commit/689060e1bbbf7bcd54622e30b3e2bca2c2d46cf0))
+
 # [1.8.0](https://github.com/esmartit/smartpoke-dashboard/compare/v1.7.7...v1.8.0) (2020-03-28)
 
 
