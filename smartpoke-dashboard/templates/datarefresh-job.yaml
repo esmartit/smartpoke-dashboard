@@ -1,0 +1,20 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ include "smartpoke-chart.fullname" . }}
+  labels:
+    {{- include "smartpoke-chart.labels" . | nindent 4 }}
+spec:
+  schedule: "0 0 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: {{ .Chart.Name }}
+              image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+              args:
+                - /usr/local/bin/php
+                - -c
+                - /var/www/smartpoke.es/smartpoke/datarefresh.php
+          restartPolicy: OnFailure
