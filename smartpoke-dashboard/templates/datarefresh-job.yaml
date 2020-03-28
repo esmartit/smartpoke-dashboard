@@ -13,6 +13,18 @@ spec:
           containers:
             - name: {{ .Chart.Name }}
               image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+              env:
+              - name: "DB_HOST"
+                value: {{ .Values.database.host }}
+              - name: "DB_PORT"
+                value: {{ .Values.database.port | quote }}
+              - name: "DB_USER"
+                value: {{ .Values.database.user }}
+              - name: "DB_PASS"
+                valueFrom:
+                  secretKeyRef:
+                    key:  postgresql-password
+                    name: {{ .Values.database.passwordKeyref }}
               args:
                 - /usr/local/bin/php
                 - -c
