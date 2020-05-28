@@ -56,7 +56,7 @@
 	$arr_smartpoke = array(); // SmartPoke
 
 	$arr_smartpoke['data'] = $arr_users;	
-	$myfile = "../../json/smartpokeDB-".$session_id.".json";
+	$myfile = "../../datatables/smartpokeDB-".$session_id.".json";
 	// $myfile = "rocotowifi/datatables/smartpokeDB-".$session_id.".json";
 	try {
 		//Convert updated array to JSON
