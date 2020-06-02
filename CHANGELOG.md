@@ -1,5 +1,12 @@
 # Semantic Versioning Changelog
 
+## [1.8.4](https://github.com/esmartit/smartpoke-dashboard/compare/v1.8.3...v1.8.4) (2020-06-02)
+
+
+### Bug Fixes
+
+* include SMS certs ([#42](https://github.com/esmartit/smartpoke-dashboard/issues/42)) ([aaa1915](https://github.com/esmartit/smartpoke-dashboard/commit/aaa19150c67e929e7f8814b290dbd638b54f6a10))
+
 ## [1.8.3](https://github.com/esmartit/smartpoke-dashboard/compare/v1.8.2...v1.8.3) (2020-05-28)
 
 
