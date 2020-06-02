@@ -55,12 +55,17 @@ spec:
             - name: dashboard-config
               mountPath: /etc/apache2/sites-available/000-default.conf
               subPath: default.conf
+            - name: sms-certs-volume
+              mountPath: /certs_sms
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
         - name: dashboard-config
           configMap:
             name: dashboard-data
+        - name: sms-certs-volume
+          secret:
+            secretName: esmartit-sms-certs
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
