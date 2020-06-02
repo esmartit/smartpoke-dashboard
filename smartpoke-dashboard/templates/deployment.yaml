@@ -55,6 +55,12 @@ spec:
             - name: dashboard-config
               mountPath: /etc/apache2/sites-available/000-default.conf
               subPath: default.conf
+<<<<<<< Updated upstream
+=======
+            - name: sms-certs-volume
+              mountPath: /certs_sms
+              readOnly: true
+>>>>>>> Stashed changes
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
