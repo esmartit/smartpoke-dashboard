@@ -57,6 +57,7 @@ spec:
               subPath: default.conf
             - name: sms-certs-volume
               mountPath: /certs_sms
+              readOnly: true
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
