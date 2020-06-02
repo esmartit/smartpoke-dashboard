@@ -1,5 +1,12 @@
 # Semantic Versioning Changelog
 
+## [1.8.3](https://github.com/esmartit/smartpoke-dashboard/compare/v1.8.2...v1.8.3) (2020-05-28)
+
+
+### Bug Fixes
+
+* fixing bug ([f7da3ad](https://github.com/esmartit/smartpoke-dashboard/commit/f7da3ad534d45c61bf848e3320da069cf6ec5909))
+
 ## [1.8.2](https://github.com/esmartit/smartpoke-dashboard/compare/v1.8.1...v1.8.2) (2020-03-29)
 
 
