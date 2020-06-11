@@ -70,6 +70,11 @@
 	        $phoneok = 1;
 	      }  
 	      break;
+		  case "DNK":
+			  if (preg_match("/^[4]{1}[0]{1}[0-9]{6}$/", $phonenumber)) {
+				  $phoneok = 1;
+			  }
+			  break;
 	    case "ESP":
 	      if (preg_match("/^[67]{1}[0-9]{2}[0-9]{6}$/", $phonenumber)) {
 	        $phoneok = 1;
