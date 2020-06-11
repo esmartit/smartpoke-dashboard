@@ -1,5 +1,12 @@
 # Semantic Versioning Changelog
 
+## [1.8.5](https://github.com/esmartit/smartpoke-dashboard/compare/v1.8.4...v1.8.5) (2020-06-11)
+
+
+### Bug Fixes
+
+* adding Denmark verify mobile number function ([#45](https://github.com/esmartit/smartpoke-dashboard/issues/45)) ([37ddfbc](https://github.com/esmartit/smartpoke-dashboard/commit/37ddfbc060f129f97dc772aeb14ea8fd7f16b213))
+
 ## [1.8.4](https://github.com/esmartit/smartpoke-dashboard/compare/v1.8.3...v1.8.4) (2020-06-02)
 
 
