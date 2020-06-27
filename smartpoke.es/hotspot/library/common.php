@@ -70,11 +70,11 @@
 	        $phoneok = 1;
 	      }  
 	      break;
-		  case "DNK":
-			  if (preg_match("/^[4]{1}[0]{1}[0-9]{6}$/", $phonenumber)) {
-				  $phoneok = 1;
-			  }
-			  break;
+		case "DNK":
+			if (preg_match("/^[23456789]{1}[0-9]{1}[0-9]{6}$/", $number)) {
+				$phoneok = 1;
+			}
+			break;
 	    case "ESP":
 	      if (preg_match("/^[67]{1}[0-9]{2}[0-9]{6}$/", $phonenumber)) {
 	        $phoneok = 1;
@@ -100,6 +100,11 @@
 	        $phoneok = 1;
 	      }  
 	      break;
+	    case "MEX":
+			  if (preg_match("/^[5]{1}[2]{1}[1]{1}[0-9]{8}$/", $number)) {
+				  $res = 1;
+			  }
+			  break;
 	    case "NLD":
 	      if (preg_match("/^[6]{1}[0-9]{2}[0-9]{6}$/", $phonenumber)) {
 	        $phoneok = 1;
