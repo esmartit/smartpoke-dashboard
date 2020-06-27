@@ -56,85 +56,85 @@
 	  $phoneok = 0;  
 	  switch($code) {
 	    case "COL":
-	      if (preg_match("/^[3]{1}[0125]{1}[0-9]{1}[0-9]{7}$/", $phonenumber)) {
-	        $phoneok = 1;
-	      }  
+	      	if (preg_match("/^[3]{1}[0125]{1}[0-9]{1}[0-9]{7}$/", $phonenumber)) {
+	        	$phoneok = 1;
+	      	}
 	      break;
 	    case "CRI":
-	      if (preg_match("/^[5678]{1}[0-9]{3}[0-9]{4}$/", $phonenumber)) {
-	        $phoneok = 1;
-	      }  
-	      break;
+	      	if (preg_match("/^[5678]{1}[0-9]{3}[0-9]{4}$/", $phonenumber)) {
+	        	$phoneok = 1;
+	      	}
+	      	break;
 	    case "DEU":
-	      if (preg_match("/^[1]{1}[567]{1}[0-9]{8}$/", $phonenumber) || preg_match("/^[1]{1}[567]{1}[0-9]{9}$/", $phonenumber)) {
-	        $phoneok = 1;
-	      }  
-	      break;
+	      	if (preg_match("/^[1]{1}[567]{1}[0-9]{8}$/", $phonenumber) || preg_match("/^[1]{1}[567]{1}[0-9]{9}$/", $phonenumber)) {
+	        	$phoneok = 1;
+	      	}
+	      	break;
 		case "DNK":
 			if (preg_match("/^[23456789]{1}[0-9]{1}[0-9]{6}$/", $number)) {
 				$phoneok = 1;
 			}
 			break;
 	    case "ESP":
-	      if (preg_match("/^[67]{1}[0-9]{2}[0-9]{6}$/", $phonenumber)) {
-	        $phoneok = 1;
-	      }  
-	      break;
+	      	if (preg_match("/^[67]{1}[0-9]{2}[0-9]{6}$/", $phonenumber)) {
+	        	$phoneok = 1;
+	      	}
+	      	break;
 	    case "FRA":
-	      if (preg_match("/^[6]{1}[0-9]{2}[0-9]{6}$/", $phonenumber)) {
-	        $phoneok = 1;
-	      }  
-	      break;
+	      	if (preg_match("/^[6]{1}[0-9]{2}[0-9]{6}$/", $phonenumber)) {
+	        	$phoneok = 1;
+	      	}
+	      	break;
 	    case "GBR":
-	      if (preg_match("/^[7]{1}[0-9]{2}[0-9]{7}$/", $phonenumber)) {
-	        $phoneok = 1;
-	      }  
-	      break;
+	      	if (preg_match("/^[7]{1}[0-9]{2}[0-9]{7}$/", $phonenumber)) {
+	        	$phoneok = 1;
+	      	}
+	      	break;
 	    case "GTM":
-	      if (preg_match("/^[45]{1}[0-9]{3}[0-9]{4}$/", $phonenumber)) {
-	        $phoneok = 1;
-	      }  
-	      break;
+	      	if (preg_match("/^[45]{1}[0-9]{3}[0-9]{4}$/", $phonenumber)) {
+	        	$phoneok = 1;
+	      	}
+	      	break;
 	    case "ITA":
-	      if (preg_match("/^[3]{1}[0-9]{2}[0-9]{7}$/", $phonenumber)) {
-	        $phoneok = 1;
-	      }  
-	      break;
+	      	if (preg_match("/^[3]{1}[0-9]{2}[0-9]{7}$/", $phonenumber)) {
+	        	$phoneok = 1;
+	      	}
+	      	break;
 	    case "MEX":
-			  if (preg_match("/^[5]{1}[2]{1}[1]{1}[0-9]{8}$/", $number)) {
-				  $res = 1;
-			  }
-			  break;
+			if (preg_match("/^[5]{1}[2]{1}[1]{1}[0-9]{8}$/", $number)) {
+				$phoneok = 1;
+			}
+			break;
 	    case "NLD":
-	      if (preg_match("/^[6]{1}[0-9]{2}[0-9]{6}$/", $phonenumber)) {
-	        $phoneok = 1;
-	      }  
-	      break;
+	      	if (preg_match("/^[6]{1}[0-9]{2}[0-9]{6}$/", $phonenumber)) {
+	        	$phoneok = 1;
+	      	}
+	      	break;
 	    case "PER":
-	      if (preg_match("/^[9]{1}[0-9]{2}[0-9]{6}$/", $phonenumber)) {
-	        $phoneok = 1;
-	      }  
-	      break;
+	      	if (preg_match("/^[9]{1}[0-9]{2}[0-9]{6}$/", $phonenumber)) {
+	        	$phoneok = 1;
+	      	}
+	      	break;
 	    case "POR":
-	      if (preg_match("/^[9]{1}[0-9]{2}[0-9]{6}$/", $phonenumber)) {
-	        $phoneok = 1;
-	      }  
-	      break;
+	      	if (preg_match("/^[9]{1}[0-9]{2}[0-9]{6}$/", $phonenumber)) {
+	        	$phoneok = 1;
+	      	}
+	      	break;
 	    case "RUS":
-	      if (preg_match("/^[9]{1}[0-9]{2}[0-9]{7}$/", $phonenumber)) {
-	        $phoneok = 1;
-	      }  
-	      break;
+	      	if (preg_match("/^[9]{1}[0-9]{2}[0-9]{7}$/", $phonenumber)) {
+	        	$phoneok = 1;
+	      	}
+	      	break;
 	    case "USA":
-	      if (preg_match("/^[1-9]{1}[0-9]{2}[0-9]{7}$/", $phonenumber)) {
-	        $phoneok = 1;
-	      }  
-	      break;
+	      	if (preg_match("/^[1-9]{1}[0-9]{2}[0-9]{7}$/", $phonenumber)) {
+	        	$phoneok = 1;
+	      	}
+	      	break;
 	    case "VEN":
-	      if (preg_match("/^[4]{1}[0-9]{2}[0-9]{7}$/", $phonenumber)) {
-	        $phoneok = 1;
-	      }  
-	      break;      
+	      	if (preg_match("/^[4]{1}[0-9]{2}[0-9]{7}$/", $phonenumber)) {
+	        	$phoneok = 1;
+	      	}
+	      	break;
 	  }
 	  return $phoneok;
 	}
