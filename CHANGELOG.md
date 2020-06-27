@@ -1,5 +1,12 @@
 # Semantic Versioning Changelog
 
+## [1.8.6](https://github.com/esmartit/smartpoke-dashboard/compare/v1.8.5...v1.8.6) (2020-06-27)
+
+
+### Bug Fixes
+
+* gh pages ([#47](https://github.com/esmartit/smartpoke-dashboard/issues/47)) ([2fe0830](https://github.com/esmartit/smartpoke-dashboard/commit/2fe08309143dbd6cd32f19aba799be93136ae051))
+
 ## [1.8.5](https://github.com/esmartit/smartpoke-dashboard/compare/v1.8.4...v1.8.5) (2020-06-11)
 
 
