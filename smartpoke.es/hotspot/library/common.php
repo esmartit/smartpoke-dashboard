@@ -71,7 +71,7 @@
 	      	}
 	      	break;
 		case "DNK":
-			if (preg_match("/^[23456789]{1}[0-9]{1}[0-9]{6}$/", $number)) {
+			if (preg_match("/^[23456789]{1}[0-9]{1}[0-9]{6}$/", $phonenumber)) {
 				$phoneok = 1;
 			}
 			break;
@@ -101,7 +101,7 @@
 	      	}
 	      	break;
 	    case "MEX":
-			if (preg_match("/^[5]{1}[2]{1}[1]{1}[0-9]{8}$/", $number)) {
+			if (preg_match("/^[5]{1}[2]{1}[1]{1}[0-9]{8}$/", $phonenumber)) {
 				$phoneok = 1;
 			}
 			break;
