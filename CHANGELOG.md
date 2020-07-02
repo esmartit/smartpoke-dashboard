@@ -1,5 +1,12 @@
 # Semantic Versioning Changelog
 
+## [1.8.7](https://github.com/esmartit/smartpoke-dashboard/compare/v1.8.6...v1.8.7) (2020-07-02)
+
+
+### Bug Fixes
+
+* error in variable $phonenumber ([#48](https://github.com/esmartit/smartpoke-dashboard/issues/48)) ([3d440c1](https://github.com/esmartit/smartpoke-dashboard/commit/3d440c1c9d82d148c6c39237b8cd1d83e3e9c74c))
+
 ## [1.8.6](https://github.com/esmartit/smartpoke-dashboard/compare/v1.8.5...v1.8.6) (2020-06-27)
 
 
